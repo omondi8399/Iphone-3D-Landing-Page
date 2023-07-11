@@ -6,26 +6,26 @@ import { useLayoutEffect } from "react";
 import styled, { keyframes } from "styled-components";
 
 const Section = styled.section`
-width: 100vw;
-height: 100vh;
-position: relative;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
 
-display: flex;
-justify-content: center;
-align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const TextContainer = styled.div`
-width: 100vw;
-height: 100vh;
+  width: 100vw;
+  height: 100vh;
 
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
-background-color: var(--dark);
-color: var(--white);
+  background-color: var(--dark);
+  color: var(--white);
 `;
 const moveUp = keyframes`
 100%{
@@ -34,13 +34,13 @@ const moveUp = keyframes`
 `;
 
 const Text = styled.p`
-width: 50%;
-font-size: var(--fontlg);
-position: relative;
-height: var(--fontmd);
-overflow: hidden;
+  width: 50%;
+  font-size: var(--fontlg);
+  position: relative;
+  height: var(--fontmd);
+  overflow: hidden;
 
-span {
+  span {
     position: absolute;
     transform: translateY(3rem);
     animation-name: ${moveUp};
@@ -53,80 +53,80 @@ span {
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-}
+  }
 
-.author {
+  .author {
     width: 100%;
     text-align: end;
     background-image: linear-gradient(-180deg, var(--gradient));
     font-family: var(--fontR);
-}
+  }
 
-@media screen and (max-width: 70em) {
+  @media screen and (max-width: 70em) {
     width: 70%;
-}
+  }
 
-@media screen and (max-width: 48em) {
+  @media screen and (max-width: 48em) {
     font-size: var(--fontmd);
     height: var(--fontsm);
-}
-@media screen and (max-width: 40em) {
+  }
+  @media screen and (max-width: 40em) {
     width: 90%;
-}
-@media screen and (max-width: 30em) {
+  }
+  @media screen and (max-width: 30em) {
     font-size: var(--fontxs);
-}
+  }
 `;
 
 const Quote = () => {
-gsap.registerPlugin(ScrollTrigger);
-const sectionRef = useRef(null);
+  gsap.registerPlugin(ScrollTrigger);
+  const sectionRef = useRef(null);
 
-useLayoutEffect(() => {
+  useLayoutEffect(() => {
     let Elem = sectionRef.current;
 
     let trigger = ScrollTrigger.create({
-    trigger: Elem,
-    start: "top top",
-    pin: true,
-    pinSpacing: false,
+      trigger: Elem,
+      start: "top top",
+      pin: true,
+      pinSpacing: false,
     });
 
     return () => {
-    if (trigger) trigger.kill();
+      if (trigger) trigger.kill();
     };
-}, []);
+  }, []);
 
-return (
+  return (
     <Section ref={sectionRef}>
-    <TextContainer>
+      <TextContainer>
         <Text delay="0s">
-        {" "}
-        <span>&#8220; You can't connect the dots looking forward;</span>{" "}
+          {" "}
+          <span>&#8220; You can't connect the dots looking forward;</span>{" "}
         </Text>
         <Text delay="0.4s">
-        {" "}
-        <span>
+          {" "}
+          <span>
             &nbsp;&nbsp;&nbsp;you can only connect them looking backward.
-        </span>{" "}
+          </span>{" "}
         </Text>
         <Text delay="0.8s">
-        {" "}
-        <span>&nbsp;&nbsp;&nbsp;so you have to trust that the dots</span>{" "}
+          {" "}
+          <span>&nbsp;&nbsp;&nbsp;so you have to trust that the dots</span>{" "}
         </Text>
         <Text delay="1.2s">
-        {" "}
-        <span>
+          {" "}
+          <span>
             &nbsp;&nbsp;&nbsp;will somehow connect in your future. &#8221;
-        </span>{" "}
+          </span>{" "}
         </Text>
         <Text delay="1.6s">
-        {" "}
-        <span className="author">&#x23AF; Steve Jobs</span>{" "}
+          {" "}
+          <span className="author">&#x23AF; Steve Jobs</span>{" "}
         </Text>
-    </TextContainer>
+      </TextContainer>
     </Section>
-);
+  );
 };
 
 export default Quote;
